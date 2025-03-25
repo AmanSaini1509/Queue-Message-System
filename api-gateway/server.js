@@ -12,19 +12,37 @@ app.use(cors())
 // Proxy to producer-service
 app.use('/producer', createProxyMiddleware({
     target: process.env.PRODUCER_SERVICE_URL,
-    changeOrigin: true
+    changeOrigin: true,
+    onError: (err, req, res) => {
+      console.error('Proxy error:', err);
+      res.status(500).json({ error: 'Service Unavailable' });
+  },
+  onProxyReq: (proxyReq, req) => {
+    console.log(`Proxying request to Producer: ${req.method} ${req.originalUrl}`);
+},
+timeout: 60000, // 60 seconds
+    proxyTimeout: 60000,
 }));
 
 // Proxy to monitoring-service
 app.use('/monitoring', createProxyMiddleware({
     target: process.env.MONITORING_SERVICE_URL,
-    changeOrigin: true
+    changeOrigin: true,
+    onError: (err, req, res) => {
+      console.error('Proxy error:', err);
+      res.status(500).json({ error: 'Service Unavailable' });
+  },
+  onProxyReq: (proxyReq, req) => {
+    console.log(`Proxying request to Producer: ${req.method} ${req.originalUrl}`);
+},
+timeout: 60000, // 60 seconds
+    proxyTimeout: 60000,
 }));
 
 // HOME ROUTE
-app.get("/",'0.0.0.0', (req, res) => {
-    res.send("🚀 API Gateway is running...");
-  });
+app.get("/", (req, res) => {
+  res.send("🚀 API Gateway is running...");
+});
 
 // SERVER
 const PORT = process.env.PORT || 5000;
