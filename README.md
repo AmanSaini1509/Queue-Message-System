@@ -10,14 +10,15 @@ A highly scalable, microservices-based Queue Management System built using Node.
 ✅ Real-Time Monitoring Dashboard – Tracks message throughput, worker health, and error handling stats.
 
 # 🎯 System Architecture
-┌──────────────┐       ┌──────────────┐       ┌──────────────┐
-│  Producer    │  -->  │  RabbitMQ    │  -->  │  Consumer    │
-└──────────────┘       └──────────────┘       └──────────────┘
-         |                    |                       |
-         v                    v                       v
-  ┌─────────────┐      ┌─────────────┐         ┌─────────────┐
-  │  MongoDB    │      │  Redis      │         │  Monitoring │
-  └─────────────┘      └─────────────┘         └─────────────┘
+
+         ┌──────────────┐       ┌──────────────┐       ┌──────────────┐
+         │  Producer    │  -->  │  RabbitMQ    │  -->  │  Consumer    │
+         └──────────────┘       └──────────────┘       └──────────────┘
+                  |                    |                       |
+                  v                    v                       v
+           ┌─────────────┐      ┌─────────────┐         ┌─────────────┐
+           │  MongoDB    │      │  Redis      │         │  Monitoring │
+           └─────────────┘      └─────────────┘         └─────────────┘
 
   
 # 📦 Tech Stack
@@ -70,18 +71,21 @@ Ensure RabbitMQ, MongoDB, and Redis services are running before starting the app
          //Start Redis
          sudo systemctl start redis
 
-5. Run the Microservices
+6. Run the Microservices
 Run Producer Service
-cd producer
-node server.js
+
+         cd producer
+         node server.js
 
 Run Consumer Service
-cd consumer
-node server.js
+
+         cd consumer
+         node server.js
 
 Run Monitoring Service
-cd monitoring
-node server.js
+
+         cd monitoring
+         node server.js
 
 # 🔥 Usage
 Producer API: Send messages to the queue.
@@ -91,13 +95,14 @@ Consumer Service: Processes messages from the queue.
 Monitoring Service: Displays real-time stats of message throughput and worker health.
 
 Example Request (Producer API)
-POST /api/send
-Content-Type: application/json
 
-{
-  "message": "Hello, World!",
-  "priority": "high"
-}
+         POST /api/send
+         Content-Type: application/json
+         
+         {
+           "message": "Hello, World!",
+           "priority": "high"
+         }
 
 # 🧠 Future Enhancements
  Implement WebSockets for real-time notifications.
