@@ -33,38 +33,42 @@ A highly scalable, microservices-based Queue Management System built using Node.
 
 # 🛠️ Setup and Installation
 1. Clone the Repository
-git clone https://github.com/AmanSaini1509/Queue-Message-System.git
-cd Queue-Message-System
+   
+         git clone https://github.com/AmanSaini1509/Queue-Message-System.git
+         cd Queue-Message-System
 
-2. Install Dependencies
-//Install dependencies for all microservices
-npm install
+3. Install Dependencies
+   
+         //Install dependencies for all microservices
+         npm install
 
-3. Configure Environment Variables
-Create a .env file in the services directory and set the following variables:
-//RabbitMQ Configuration
-RABBITMQ_URL=amqp://localhost
+4. Configure Environment Variables
+         Create a .env file in the services directory and set the following variables:
+   
+         //RabbitMQ Configuration
+         RABBITMQ_URL=amqp://localhost
 
-//MongoDB Configuration
-MONGO_URI=mongodb://localhost:27017/queue_system
+         //MongoDB Configuration
+         MONGO_URI=mongodb://localhost:27017/queue_system
 
-//Redis Configuration
-REDIS_HOST=127.0.0.1
-REDIS_PORT=6379
+         //Redis Configuration
+         REDIS_HOST=127.0.0.1
+         REDIS_PORT=6379
 
-//Other Configuration
-PORT=3000
+         //Other Configuration
+         PORT=3000
 
-4. Run RabbitMQ, MongoDB, and Redis
+5. Run RabbitMQ, MongoDB, and Redis
 Ensure RabbitMQ, MongoDB, and Redis services are running before starting the application.
-// Start RabbitMQ
-sudo systemctl start rabbitmq-server
 
-//Start MongoDB
-sudo systemctl start mongod
+         // Start RabbitMQ
+         sudo systemctl start rabbitmq-server
 
-//Start Redis
-sudo systemctl start redis
+         //Start MongoDB
+         sudo systemctl start mongod
+
+         //Start Redis
+         sudo systemctl start redis
 
 5. Run the Microservices
 Run Producer Service
